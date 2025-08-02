@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+    #result {
+      margin-top: 30px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      display: none;
+    }
+  </style>
+
+  <script>
+    function validateAndDisplay(event) {
+      event.preventDefault(); // prevent form from submitting
+
+      // Getting values
+      var fname = document.getElementById("fname").value.trim();
+      var lname = document.getElementById("lname").value.trim();
+      var genderElems = document.getElementsByName("gender");
+      var address = document.getElementById("address").value.trim();
+      var phone = document.getElementById("phone").value.trim();
+      var email = document.getElementById("email").value.trim();
+      var city = document.getElementById("city").value.trim();
+      var state = document.getElementById("state").value.trim();
+      var country = document.getElementById("country").value.trim();
+      var college = document.getElementById("college").value;
+
+      // Gender selection
+      var gender = "";
+      for (var i = 0; i < genderElems.length; i++) {
+        if (genderElems[i].checked) {
+          gender = genderElems[i].value;
+          break;
+        }
+      }
+
+      // Hobbies
+      var hobbies = [];
+      if (document.getElementById("hobby1").checked) hobbies.push("Reading");
+      if (document.getElementById("hobby2").checked) hobbies.push("Writing");
+      if (document.getElementById("hobby3").checked) hobbies.push("Swimming");
+
+      // Validations
+      if (fname === "" || lname === "" || gender === "" || address === "" || phone === "" || email === "" || city === "" || state === "" || country === "") {
+        alert("Please fill in all fields.");
+        return;
+      }
+      var phonelen=phone.length;
+      if (phonelen !== 10) {
+        alert("Phone number must be 10 digits.");
+        return;
+      }
+      var abs=email.indexOf('@');
+      var dot=email.lastIndexOf('.');
+      if (abs < 1 || dot <= abs + 2 || dot + 2 >= email.length) {
+        alert("Invalid email format.");
+        return;
+      }
+      
+
+      document.getElementById("result").style.display = "block";
+      document.getElementById("result").innerHTML = `
+        <h3>Submitted Information</h3>
+        <p><strong>First Name:</strong> ${fname}</p>
+        <p><strong>Last Name:</strong> ${lname}</p>
+        <p><strong>Gender:</strong> ${gender}</p>
+        <p><strong>Address:</strong> ${address}</p>
+        <p><strong>Phone No:</strong> ${phone}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Hobbies:</strong> ${hobbies.join(", ")}</p>
+        <p><strong>City:</strong> ${city}</p>
+        <p><strong>State:</strong> ${state}</p>
+        <p><strong>Country:</strong> ${country}</p>
+        <p><strong>College:</strong> ${document.querySelector('#college option:checked').text}</p>
+      `;
+    }
+  </script>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 style="text-align: center;">Registration Form</h1>
+    </div>
+  </div>
+  <form class="form-horizontal" onsubmit="validateAndDisplay(event)">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-1">
+          <label class="control-label">First Name:</label>
+        </div>
+        <div class="col-lg-10">
+          <input type="text" id="fname" class="form-control" placeholder="Enter your first name">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-1">
+          <label class="control-label">Last Name:</label>
+        </div>
+        <div class="col-lg-10">
+          <input type="text" id="lname" class="form-control" placeholder="Enter your last name">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1">
+        <label class="control-label">Gender:</label>
+      </div>
+      <div class="col-lg-1">
+        <div class="radio">
+          <label><input type="radio" name="gender" value="Male">Male</label>
+        </div>
+      </div>
+      <div class="col-lg-1">
+        <div class="radio">
+          <label><input type="radio" name="gender" value="Female">Female</label>
+        </div>
+      </div>
+      <div class="col-lg-1">
+        <div class="radio">
+          <label><input type="radio" name="gender" value="Other">Other</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-1">
+          <label class="control-label">Address:</label>
+        </div>
+        <div class="col-lg-10">
+          <textarea id="address" class="form-control" rows="3" placeholder="Enter your address"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-1">
+          <label class="control-label">Phone No.:</label>
+        </div>
+        <div class="col-lg-10">
+          <input type="text" id="phone" class="form-control" placeholder="Enter your phone number">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-1">
+          <label class="control-label">Email:</label>
+        </div>
+        <div class="col-lg-10">
+          <input type="email" id="email" class="form-control" placeholder="Enter your email id">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1">
+        <label class="control-label">Hobby:</label>
+      </div>
+      <div class="col-lg-1">
+        <div class="checkbox">
+          <label><input type="checkbox" id="hobby1">Reading</label>
+        </div>
+      </div>
+      <div class="col-lg-1">
+        <div class="checkbox">
+          <label><input type="checkbox" id="hobby2">Writing</label>
+        </div>
+      </div>
+      <div class="col-lg-1">
+        <div class="checkbox">
+          <label><input type="checkbox" id="hobby3">Swimming</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-1">
+          <label class="control-label">City:</label>
+        </div>
+        <div class="col-lg-10">
+          <input type="text" id="city" class="form-control" placeholder="Enter your city">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-1">
+          <label class="control-label">State:</label>
+        </div>
+        <div class="col-lg-10">
+          <input type="text" id="state" class="form-control" placeholder="Enter your state">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-1">
+          <label class="control-label">Country:</label>
+        </div>
+        <div class="col-lg-10">
+          <input type="text" id="country" class="form-control" placeholder="Enter your country">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-1">
+          <label class="control-label">College:</label>
+        </div>
+        <div class="col-lg-4">
+          <select class="form-control" id="college">
+            <option value="1">FOTE, MSU</option>
+            <option value="2">IIT BOMBAY</option>
+            <option value="3">IIT MADRAS</option>
+            <option value="4">IIT KHARAGPUR</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <button type="submit" class="btn btn-primary col-lg-offset-1">Submit</button>
+      </div>
+    </div>
+  </form>
+
+  <div id="result"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Art & Gallery</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .gallery-title {
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      font-size: 32px;
+      font-weight: bold;
+    }
+    .gallery-box {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      padding: 10px;
+      background-color: white;
+      transition: transform 0.3s;
+      height: 100%;
+    }
+    .gallery-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .gallery-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .gallery-caption {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body style="background-color: gray;">
+  <div class="container" style="background-color: gray;">
+    <h1 class="gallery-title">The heavens of india</h1>
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="gallery-box">
+          <img src="kanchan.jpeg" alt="Art 1" class="gallery-img">
+          <p class="gallery-caption">Kanchanjanga</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="gallery-box">
+          <img src="dal.jpg" alt="Art 2" class="gallery-img">
+          <p class="gallery-caption">Dal Lake</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="gallery-box">
+          <img src="gulmarg.jpg" alt="Art 3" class="gallery-img">
+          <p class="gallery-caption">Gulmarg View</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="gallery-box">
+          <img src="vallyu.jpeg" alt="Art 4" class="gallery-img">
+          <p class="gallery-caption">Kashmir Valley</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="gallery-box">
+          <img src="kerala.jpg" alt="Art 1" class="gallery-img">
+          <p class="gallery-caption">Kerala</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="gallery-box">
+          <img src="kanyakumari.jpg" alt="Art 2" class="gallery-img">
+          <p class="gallery-caption">Kanyakumari</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="gallery-box">
+          <img src="arvalli.avif" alt="Art 3" class="gallery-img">
+          <p class="gallery-caption">Aravalli</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="gallery-box">
+          <img src="ladak.jpg" alt="Art 4" class="gallery-img">
+          <p class="gallery-caption">Ladakh</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

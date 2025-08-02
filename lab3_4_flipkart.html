@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar Example</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    
+
+    .ty li {
+      margin-right: 15px;
+    }
+
+    /* Dropdown opens on hover */
+    .hover-dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    /* Optional: fix caret alignment */
+    .dropdown-toggle .caret {
+      margin-left: 5px;
+    }
+    .category td:hover {
+      color: blue;
+    }
+    .c1{
+      margin-right: 90px;
+    }
+
+  
+.ul2 li {
+  position: absolute;
+  top: 40%;
+  width: 40px;
+  height: 100px;
+  background: white;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  color: #666;
+  font-size: 30px;
+  line-height: 100px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s, color 0.3s;
+  pointer-events: auto;
+}
+.ul2 li.previous {
+ left: 25px;
+  border-radius: 10px 0 0 10px;
+  font-size: 35px;
+}
+.ul2 li.next {
+  left: 1090px;
+  border-radius: 0 10px 10px 0;
+  font-size: 35px;
+}
+.ul2 li:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+.ul3 li {
+  position: absolute;
+  top: 40%;
+  width: 40px;
+  height: 100px;
+  background: white;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  color: #666;
+  font-size: 30px;
+  line-height: 100px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s, color 0.3s;
+  pointer-events: auto;
+}
+.ul3 li.previous {
+ left: 25px;
+  border-radius: 10px 0 0 10px;
+  font-size: 35px;
+}
+.ul3 li.next {
+  left: 1337px;
+  border-radius: 0 10px 10px 0;
+  font-size: 35px;
+}
+.ul3 li:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+
+  </style>
+</head>
+<body style="background-color: rgb(236, 234, 234);">
+<nav class="navbar navbar-default" style="background-color: white; height: 80px; width: 100%; margin-bottom: 0;">
+  <div class="container-fluid">
+
+    <!-- Logo -->
+    <div class="navbar-header" style="margin-left: 30px;">
+      <a class="navbar-brand" href="#">
+        <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg"
+             width="160" height="40" alt="Flipkart">
+      </a>
+    </div>
+
+    <!-- Search Form -->
+    <form class="navbar-form navbar-left" action="#">
+      <div class="input-group" style="margin-top: 10px; margin-left: 10px;">
+        <div class="input-group-btn">
+          <button type="submit" class="btn btn-default"
+                  style="height: 43px; background-color: #F0F5FF; border-color: white; border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+        <input type="text" placeholder="Search for products, brands and more" class="form-control"
+               style="width: 600px; height: 43px; background-color: #F0F5FF; border:none;
+                      border-top-right-radius: 10px; border-bottom-right-radius: 10px; font-size: 18px;">
+      </div>
+    </form>
+
+    <!-- Right-side Links -->
+    <ul class="nav navbar-nav navbar-right" style="margin-top: 13px;">
+
+      <!-- Login Dropdown -->
+      <li class="dropdown" style="margin-left: 0;">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+           style="color: black; font-size: 16px;">
+          <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/profile-52e0dc.svg"
+               width="24" height="24"> Login <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" style="min-width: 200px;">
+          <li><a href="#">My Profile</a></li>
+          <li><a href="#">Orders</a></li>
+          <li><a href="#">Wishlist</a></li>
+        </ul>
+      </li>
+
+      <!-- Cart -->
+      <li><a href="#" style="color: black; font-size: 16px;"><img
+              src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_cart-eed150.svg"
+              width="24" height="24"> Cart</a></li>
+
+      <!-- Become a Seller -->
+      <li><a href="#" style="color: black; font-size: 16px;"><img
+              src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/Store-9eeae2.svg"
+              width="24" height="24"> Become a Seller</a></li>
+
+      <!-- More Dropdown -->
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+           style="color: black; font-size: 16px;">
+          <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_3verticalDots-ea7819.svg"
+               width="24" height="24"> <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" style="min-width: 200px;">
+          <li><a href="#">Notification Preferences</a></li>
+          <li><a href="#">Customer Care</a></li>
+          <li><a href="#">Advertise</a></li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+</nav><div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div style="height: 140px;  margin-left: 1px; margin-right: 1px; margin-top: 10px; background-color: white;">
+              <table style="margin-left: 150px; " class="category">
+                <tr>
+                  <td >
+                    <a href="#"><img style="margin-top: 20px; margin-bottom: 0; margin-right: 70px;" class="_2puWtW _3a3qyb" alt="Grocery" src="https://rukminim1.flixcart.com/flap/64/64/image/29327f40e9c4d26b.png?q=100"></a>
+                    <span style="display: block; text-align: center; font-weight: bold; margin-top: 10px; margin-right: 70px">Grocery</span>
+                  </td>
+                  <td>
+                    <a href="#"><img style="margin-top: 20px; margin-bottom: 0; margin-right: 70px;" class="_2puWtW _3a3qyb" alt="Mobiles" src="https://rukminim1.flixcart.com/flap/64/64/image/22fddf3c7da4c4f4.png?q=100"></a>
+                    <span style="display: block; text-align: center; font-weight: bold; margin-top: 10px; margin-right: 70px">Mobiles</span>
+                  </td>
+                  <td>
+                    <a href="#"><img style="margin-top: 20px; margin-bottom: 0; margin-right: 70px;" class="_2puWtW _3a3qyb" alt="Fashion" src="https://rukminim1.flixcart.com/fk-p-flap/64/64/image/0d75b34f7d8fbcb3.png?q=100"></a>
+                    <span style="display: block; text-align: center; font-weight: bold; margin-top: 10px; margin-right: 70px">Fashion</span>
+                  </td>
+                  <td>
+                    <a href="#"><img style="margin-top: 20px; margin-bottom: 0; margin-right: 70px;" class="_2puWtW _3a3qyb" alt="Electronics" src="https://rukminim1.flixcart.com/flap/64/64/image/69c6589653afdb9a.png?q=100"></a>
+                    <span style="display: block; text-align: center; font-weight: bold; margin-top: 10px; margin-right: 70px">Electronics</span>
+                  </td>
+                  <td>
+                    <a href="#"><img style="margin-top: 20px; margin-bottom: 0; margin-right: 70px;" class="_2puWtW _3a3qyb" alt="Home &amp; Furniture" src="https://rukminim1.flixcart.com/flap/64/64/image/ab7e2b022a4587dd.jpg?q=100"></a>
+                    <span style="display: block; text-align: center; font-weight: bold; margin-top: 10px; margin-right: 70px">Home & Furniture</span>
+                  </td>
+                  <td>
+                    <a href="#"><img style="margin-top: 20px; margin-bottom: 0; margin-right: 70px;" class="_2puWtW _3a3qyb" alt="Appliances" src="https://rukminim1.flixcart.com/fk-p-flap/64/64/image/0139228b2f7eb413.jpg?q=100"></a>
+                    <span style="display: block; text-align: center; font-weight: bold; margin-top: 10px; margin-right: 70px">Appliances</span>
+                  </td>
+                  <td>
+                    <a href="#"><img style="margin-top: 20px; margin-bottom: 0; margin-right: 70px;" class="_2puWtW _3a3qyb" alt="Flight Bookings" src="https://rukminim1.flixcart.com/flap/64/64/image/71050627a56b4693.png?q=100"></a>
+                    <span style="display: block; text-align: center; font-weight: bold; margin-top: 10px; margin-right: 70px">Flight Bookings</span>
+                  </td>
+                  <td>
+                    <a href="#"><img style="margin-top: 20px; margin-bottom: 0; margin-right: 70px;" class="_2puWtW _3a3qyb" alt="Beauty, Toys &amp; More" src="https://rukminim1.flixcart.com/flap/64/64/image/dff3f7adcf3a90c6.png?q=100"></a>
+                    <span style="display: block; text-align: center; font-weight: bold; margin-top: 10px; margin-right: 70px">Beauty, Toys & More</span>
+                  </td>
+                  <td>
+                    <a href="#"><img style="margin-top: 20px; margin-bottom: 0; margin-right: 70px;" class="_2puWtW _3a3qyb" alt="Two Wheelers" src="https://rukminim1.flixcart.com/fk-p-flap/64/64/image/05d708653beff580.png?q=100"></a>
+                    <span style="display: block; text-align: center; font-weight: bold; margin-top: 10px; margin-right: 70px">Two Wheelers</span>
+                 </tr>
+              </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+  <div class="col-lg-12">
+    <div style="height: 280px; margin: 10px 1px 0 1px; background-color: white; position: relative;">
+      
+      <!-- Previous & Next buttons -->
+      <ul class="pager" style="position:absolute; width: 100%; margin-top: 120px; z-index: 10;">
+        <li class="previous" style="float: left;">
+          <a href="#myCarousel" data-slide="prev">
+            <span aria-hidden="true">&#8249;</span>
+          </a>
+        </li>
+        <li class="next" style="float: right;">
+          <a href="#myCarousel" data-slide="next">
+            <span aria-hidden="true">&#8250;</span>
+          </a>
+        </li>
+      </ul>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+         <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <li data-target="#myCarousel" data-slide-to="3"></li>
+          <li data-target="#myCarousel" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="item active">
+           <a href=""> <img src="carosal1.jpg" alt="Slide 1" style="width:100%;"></a>
+          </div>
+          <div class="item">
+            <img src="carosal2.jpg" alt="Slide 2" style="width:100%;">
+          </div>
+          <div class="item">
+            <img src="caresol3.jpg" alt="Slide 3" style="width:100%;">
+          </div>
+          <div class="item">
+            <img src="carosal4.jpeg" alt="Slide 4" style="width:100%;">
+          </div>
+          <div class="item">
+            <img src="caresol5.jpg" alt="Slide 5" style="width:100%;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Products by Category -->
+<div class="row">
+  <div class="col-lg-10">
+    <div style="background-color: white; margin-left: 15px; margin-right: 15px; margin-top: 10px;height: 350px;  ">
+      
+        <p style="margin-left: 25px; margin-top: 20px; font-weight: bold; font-size: 22px;">Best Of Electronics</p>
+        <!-- Example Product 1 -->
+        <table style="margin-left: 50px;" >
+          <tr>
+            <td class="product">
+              <div style="text-align: center; " class="c1">
+                  <a href="#" ><img src="earbud.jpeg"  style="margin-top: 20px;  margin-bottom: 0; height: 150px; "  class="_2puWtW _3a3qyb" alt="earbuds"  ></a>
+                  <p style="  font-size: 16px; margin-left: 0; margin-bottom: 0;">Best Truewire..</p>
+                  <p style=" font-weight: bold; margin-top: 0;">Grab Now</p>
+              </div>
+            </td>
+            <td class="product">
+              <div style="text-align: center; " class="c1">
+                  <a href="#"><img src="watch.jpeg" style="margin-top: 20px;  margin-bottom: 0; height: 150px;" class="_2puWtW _3a3qyb" alt="watch"></a>
+                  <p style=" font-size: 16px; margin-left: 0; margin-bottom: 0;">Noise Smart..</p>
+                  <p style=" font-weight: bold; margin-top: 0;">From ₹1099</p>
+              </div>
+            </td>
+            <td class="product">
+              <div style="text-align: center; " class="c1">
+                  <a href="#"><img src="projector.jpeg" style="margin-top: 20px;  margin-bottom: 0; height: 150px;" class="_2puWtW _3a3qyb" alt="Projector"></a>
+                  <p style=" font-size: 16px; margin-left: 0; margin-bottom: 0;">Best of Laptops</p>
+                  <p style=" font-weight: bold; margin-top: 0;">From ₹6990</p>
+              </div>
+            </td>  
+            <td class="product">
+              <div style="text-align: center; "  class="c1">
+                  <a href="#"><img src="desktop.jpeg" style="margin-top: 20px;  margin-bottom: 0; height: 150px;" class="_2puWtW _3a3qyb" alt="Laptop"></a>
+                  <p style=" font-size: 16px; margin-left: 0; margin-bottom: 0;">Monitors</p>
+                  <p style=" font-weight: bold; margin-top: 0;">From ₹8279</p>
+              </div>
+            </td>
+            <td class="product">
+              <div style="text-align: center; " class="c1">
+                  <a href="#"><img src="smartWatch.jpeg" style="margin-top: 20px;  margin-bottom: 0; height: 150px;" class="_2puWtW _3a3qyb" alt="Laptop"></a>
+                  <p style=" font-size: 16px; margin-left: 0; margin-bottom: 0;">Fasttrack smartWatch</p>
+                  <p style=" font-weight: bold; margin-top: 0;">From ₹1399</p>
+              </div>
+            </td>
+            <td class="product">
+              <div style="text-align: center; " class="c1">
+                  <a href="#"><img src="sonySpeaker.jpeg" style="margin-top: 20px;  margin-bottom: 0; height: 150px;" class="_2puWtW _3a3qyb" alt="Laptop"></a>
+                  <p style=" font-size: 16px; margin-left: 0; margin-bottom: 0;"> Mobile Speak..</p>
+                  <p style=" font-weight: bold; margin-top: 0;">From ₹499</p>
+              </div>
+            </td>
+            <td class="product">
+              <div style="text-align: center; " class="c1">
+                  <a href="#"><img src="Sandisk.jpeg" style="margin-top: 20px;  margin-bottom: 0; height: 150px;" class="_2puWtW _3a3qyb" alt="Laptop"></a>
+                  <p style=" font-size: 16px; margin-left: 0; margin-bottom: 0;">SenDesk Speak..</p>
+                  <p style=" font-weight: bold; margin-top: 0;">From ₹999</p>
+              </div>
+            </td>
+            <td style="margin-left: 0; margin-right: 0;">
+              <div >
+                <ul class="pager ul2" style="margin-left: 0;">
+                  <li class="previous" id="prevBtn" style="display: none;">&#8249;</li>
+                  <li class="next" id="nextBtn">&#8250;</li>
+                </ul>
+              </div>
+            </td>
+
+          </tr>
+        </table>
+      
+    </div>
+    
+  </div>
+<div class="col-lg-2">
+    <div style="height:350px; margin-top: 10px; background:#e8fbff; border-radius:10px; margin-top:10px; box-shadow:0 0 8px rgba(0,0,0,0.06); display:flex;flex-direction:column;align-items:center; justify-content:center;">
+      <!-- Banner image -->
+      <img src="himalaya.jpeg" alt="Himalaya Monsoon Essentials" style="width:100%; border-radius:10px 10px 0 0;">
+      <!-- Offer text -->
+      
+    </div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div style="background-color: white; margin-left: 15px; margin-right: 15px; margin-top: 10px;height: 350px; width: 1345px; margin-right: 10px; ">
+      
+        <p style="margin-left: 25px; margin-top: 20px; font-weight: bold; font-size: 22px;">Best Of Electronics</p>
+        <!-- Example Product 1 -->
+        <table style="margin-left: 50px;" >
+          <tr>
+            <td class="product1">
+              <div style="text-align: center; " class="c1">
+                  <a href="#" ><img src="tedibear.jpeg"  style="margin-top: 20px;  margin-bottom: 0; height: 150px; "  class="_2puWtW _3a3qyb" alt="earbuds"  ></a>
+                  <p style="  font-size: 16px; margin-left: 0; margin-bottom: 0;">Soft Toys</p>
+                  <p style=" font-weight: bold; margin-top: 0;"><strong >Up to 70% off</strong></p>
+              </div>
+            </td>
+            <td class="product1">
+              <div style="text-align: center; " class="c1">
+                  <a href="#"><img src="cofee.jpeg" style="margin-top: 20px;  margin-bottom: 0; height: 150px;" class="_2puWtW _3a3qyb" alt="watch"></a>
+                  <p style=" font-size: 16px; margin-left: 0; margin-bottom: 0;">Cofee Powder</p>
+                  <p style=" font-weight: bold; margin-top: 0;"><strong>Up to 80% off</strong></p>
+              </div>
+            </td>
+            <td class="product1">
+              <div style="text-align: center; " class="c1">
+                  <a href="#"><img src="bycycle.jpeg" style="margin-top: 20px;  margin-bottom: 0; height: 150px;" class="_2puWtW _3a3qyb" alt="Projector"></a>
+                  <p style=" font-size: 16px; margin-left: 0; margin-bottom: 0;">Geared Cycles</p>
+                  <p style=" font-weight: bold; margin-top: 0;"><strong >Up to 70% off</strong></p>
+              </div>
+            </td>  
+            <td class="product1">
+              <div style="text-align: center; "  class="c1">
+                  <a href="#"><img src="batman.jpeg" style="margin-top: 20px;  margin-bottom: 0; height: 150px;" class="_2puWtW _3a3qyb" alt="Laptop"></a>
+                  <p style=" font-size: 16px; margin-left: 0; margin-bottom: 0;">Best Of Action Toys</p>
+                  <p style=" font-weight: bold; margin-top: 0;"><strong >Up to 70% off</strong></p>
+              </div>
+            </td>
+            <td class="product1">
+              <div style="text-align: center; " class="c1">
+                  <a href="#"><img src="car.jpeg" style="margin-top: 20px;  margin-bottom: 0; height: 150px;" class="_2puWtW _3a3qyb" alt="Laptop"></a>
+                  <p style=" font-size: 16px; margin-left: 0; margin-bottom: 0;">Remote Controls</p>
+                  <p style=" font-weight: bold; margin-top: 0;"><strong >Up to 70% off</strong></p>
+              </div>
+            </td>
+            <td class="product1">
+              <div style="text-align: center; " class="c1">
+                  <a href="#"><img src="almond.jpeg" style="margin-top: 20px;  margin-bottom: 0; height: 150px;" class="_2puWtW _3a3qyb" alt="Laptop"></a>
+                  <p style=" font-size: 16px; margin-left: 0; margin-bottom: 0;">Dry Fruits</p>
+                  <p style=" font-weight: bold; margin-top: 0;"><strong >Up to 70% off</strong></p>
+              </div>
+            </td>
+            <td class="product1">
+              <div style="text-align: center; " class="c1">
+                  <a href="#"><img src="peanut_butter.jpeg" style="margin-top: 20px;  margin-bottom: 0; height: 150px;" class="_2puWtW _3a3qyb" alt="Laptop"></a>
+                  <p style=" font-size: 16px; margin-left: 0; margin-bottom: 0;">Food Spreads</p>
+                  <p style=" font-weight: bold; margin-top: 0;"><strong >Up to 70% off</strong></p>
+              </div>
+            </td>
+            <td class="product1">
+              <div style="text-align: center; " class="c1">
+                  <a href="#"><img src="Sandisk.jpeg" style="margin-top: 20px;  margin-bottom: 0; height: 150px;" class="_2puWtW _3a3qyb" alt="Laptop"></a>
+                  <p style=" font-size: 16px; margin-left: 0; margin-bottom: 0;">Top Selling Stationary</p>
+                  <p style=" font-weight: bold; margin-top: 0;"><strong >Up to 70% off</strong></p>
+              </div>
+            </td>
+            <td style="margin-left: 0; margin-right: 0;">
+              <div >
+                <ul class="pager ul3" style="margin-left: 0;">
+                  <li class="previous" id="prevBtn1" style="display: none;">&#8249;</li>
+                  <li class="next" id="nextBtn1">&#8250;</li>
+                </ul>
+              </div>
+            </td>
+
+          </tr>
+        </table>
+      
+    </div>
+    
+  </div>
+  
+  
+</div>
+<div class="row">
+  <!-- FOOTER START -->
+<footer style="background:#222; color:#fff; margin-top:30px; font-size:13px; font-family:Arial,sans-serif;">
+  <div style="max-width:1350px; margin:auto; display:flex; flex-wrap:wrap; padding:35px 0 25px 0;">
+    <!-- About -->
+    <div style="flex:1; min-width:160px; padding:0 20px;">
+      <h5 style="font-weight:600; margin-bottom:12px;">ABOUT</h5>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px; font-weight:600;">Contact Us</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">About Us</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Careers</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Flipkart Stories</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Press</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Corporate Information</a></div>
+    </div>
+    <!-- Group Companies -->
+    <div style="flex:1; min-width:120px; padding:0 20px;">
+      <h5 style="font-weight:600; margin-bottom:12px;">GROUP COMPANIES</h5>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Myntra</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Cleartrip</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Shopsy</a></div>
+    </div>
+    <!-- Help -->
+    <div style="flex:1; min-width:160px; padding:0 20px;">
+      <h5 style="font-weight:600; margin-bottom:12px;">HELP</h5>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Payments</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Shipping</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Cancellation & Returns</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">FAQ</a></div>
+    </div>
+    <!-- Consumer Policy -->
+    <div style="flex:1.2; min-width:180px; padding:0 20px;">
+      <h5 style="font-weight:600; margin-bottom:12px;">CONSUMER POLICY</h5>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Cancellation & Returns</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Terms Of Use</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Security</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Privacy</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Sitemap</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">Grievance Redressal</a></div>
+      <div><a href="#" style="color:#fff; text-decoration:none; display:block; margin-bottom:3px;">EPR Compliance</a></div>
+    </div>
+    <!-- Mail Us -->
+    <div style="flex:1.6; min-width:240px; padding:0 20px;">
+      <h5 style="font-weight:600; margin-bottom:12px;">Mail Us:</h5>
+      <div style="color:#ccc;">
+        Flipkart Internet Private Limited,<br>
+        Buildings Alyssa, Begonia &amp;<br>
+        Clove Embassy Tech Village,<br>
+        Outer Ring Road, Devarabeesanahalli Village,<br>
+        Bengaluru, 560103,<br>
+        Karnataka, India
+      </div>
+      <div style="margin-top:10px;">
+        <span style="font-weight:600;">Social:</span>
+        <span style="margin-left:5px;">
+          <i class="glyphicon glyphicon-facebook" style="font-size:18px;"></i>
+          <i class="glyphicon glyphicon-twitter" style="font-size:18px; margin-left:10px;"></i>
+          <i class="glyphicon glyphicon-youtube" style="font-size:18px; margin-left:10px;"></i>
+          <i class="glyphicon glyphicon-instagram" style="font-size:18px; margin-left:10px;"></i>
+        </span>
+      </div>
+    </div>
+    <!-- Registered Office Address -->
+    <div style="flex:1.7; min-width:270px; padding:0 20px;">
+      <h5 style="font-weight:600; margin-bottom:12px;">Registered Office Address:</h5>
+      <div style="color:#ccc;">
+        Flipkart Internet Private Limited,<br>
+        Buildings Alyssa, Begonia &amp;<br>
+        Clove Embassy Tech Village,<br>
+        Outer Ring Road, Devarabeesanahalli Village,<br>
+        Bengaluru, 560103,<br>
+        Karnataka, India<br>
+        CIN: U51109KA2012PTC066107<br>
+        Telephone: <a href="tel:044-45614700" style="color:#00f0ff;">044-45614700</a> / 
+        <a href="tel:044-67415800" style="color:#00f0ff;">044-67415800</a>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid #444; max-width:1350px; margin:auto; display:flex; justify-content:space-between; align-items:center; padding:13px 0; font-size:13px; flex-wrap:wrap;">
+    <div style="display:flex; gap:18px; color:#b0b3b6; align-items:center; flex-wrap:wrap;">
+      <span><i class="glyphicon glyphicon-briefcase"></i> Become a Seller</span>
+      <span><i class="glyphicon glyphicon-bullhorn"></i> Advertise</span>
+      <span><i class="glyphicon glyphicon-gift"></i> Gift Cards</span>
+      <span><i class="glyphicon glyphicon-question-sign"></i> Help Center</span>
+    </div>
+    <div style="color:#b0b3b6;">© 2007-2025 Flipkart.com</div>
+    <div>
+      <img src="https://img.icons8.com/color/32/visa.png" alt="Visa" style="height:22px;">
+      <img src="https://img.icons8.com/color/32/mastercard-logo.png" alt="Mastercard" style="height:22px;">
+      <img src="https://img.icons8.com/color/32/rupay.png" alt="Rupay" style="height:22px;">
+      <img src="https://img.icons8.com/color/32/amex.png" alt="Amex" style="height:22px;">
+      <img src="https://img.icons8.com/color/32/discover.png" alt="Discover" style="height:22px;">
+      <!-- Add more as you want -->
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  
+ 
+  $(document).ready(function () {
+    let $products = $(".product");
+    let totalItems = $products.length;
+    let itemsPerPage = 5;
+    let currentPage = 0;
+
+    function showPage(page) {
+      $products.hide().slice(page * itemsPerPage, (page + 1) * itemsPerPage).fadeIn(400);
+      if (page === 0) {
+        $("#prevBtn").hide();
+        $("#nextBtn").show();
+      } else {
+        $("#prevBtn").show();
+        $("#nextBtn").hide();
+      }
+    }
+
+    // Initial display
+    showPage(currentPage);
+
+    $("#nextBtn").click(function () {
+      currentPage++;
+      showPage(currentPage);
+    });
+
+    $("#prevBtn").click(function () {
+      currentPage--;
+      showPage(currentPage);
+    });
+  });
+ $(document).ready(function () {
+  // ... your first slider code (".product") ...
+
+  // --- Your second slider (".product1") ---
+  let $products1 = $(".product1");
+  let totalItems1 = $products1.length;
+  let itemsToShow1 = 6; // Show 6 at a time
+  let itemsToScroll1 = 2;
+  let currentStart1 = 0;
+
+  function updateSlider1() {
+    $products1.hide();
+    $products1.slice(currentStart1, currentStart1 + itemsToShow1).fadeIn(300);
+
+    // Show/hide buttons properly:
+    if (currentStart1 === 0) {
+      $("#prevBtn1").hide();
+      $("#nextBtn1").show();
+    } else if (currentStart1 + itemsToShow1 >= totalItems1) {
+      $("#prevBtn1").show();
+      $("#nextBtn1").hide();
+    } else {
+      $("#prevBtn1").show();
+      $("#nextBtn1").show();
+    }
+  }
+
+  updateSlider1();
+
+  // Next
+  $("#nextBtn1").click(function () {
+    if (currentStart1 + itemsToShow1 < totalItems1) {
+      currentStart1 += itemsToScroll1;
+      updateSlider1();
+    }
+  });
+
+  // Prev
+  $("#prevBtn1").click(function () {
+    if (currentStart1 - itemsToScroll1 >= 0) {
+      currentStart1 -= itemsToScroll1;
+    } else {
+      currentStart1 = 0;
+    }
+    updateSlider1();
+  });
+});
+
+
+
+</script>
+
+
+  
+</body>
+</html>

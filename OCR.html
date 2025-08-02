@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OCR Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.5/dist/tesseract.min.js"></script>
+</head>
+<body>
+  <h2>Upload Image for OCR</h2>
+  <input type="file" id="imageInput" accept="image/*"><br><br>
+  <img id="preview" width="300" style="display:none;"><br>
+  <p><strong>Recognized Text:</strong></p>
+  <pre id="output"></pre>
+
+  <script>
+    const imageInput = document.getElementById('imageInput');
+    const output = document.getElementById('output');
+    const preview = document.getElementById('preview');
+
+    imageInput.addEventListener('change', async () => {
+      const file = imageInput.files[0];
+      if (!file) return;
+
+      // Show image preview
+      const reader = new FileReader();
+      reader.onload = () => {
+        preview.src = reader.result;
+        preview.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+
+      // Perform OCR
+      output.innerText = 'Reading text...';
+      const result = await Tesseract.recognize(file, 'eng', {
+        logger: m => console.log(m) // Optional: shows progress
+      });
+
+      output.innerText = result.data.text;
+    });
+  </script>
+</body>
+</html>
