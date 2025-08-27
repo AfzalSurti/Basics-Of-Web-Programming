@@ -1,0 +1,13 @@
+body {
+  background-color: #f6f7fb;
+}
+
+.list-group-item.completed .task-title {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+
+.task-actions button + button {
+  margin-left: 0.5rem;
+}
+
