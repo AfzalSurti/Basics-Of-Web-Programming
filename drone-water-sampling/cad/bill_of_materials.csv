@@ -1,0 +1,44 @@
+Part Number,Description,Quantity,Material,Supplier,Unit Price (USD),Total Price (USD),Notes
+WS-001,Main Housing (Upper),1,Polycarbonate,Custom Fabrication,45.00,45.00,3mm wall thickness
+WS-002,Main Housing (Lower),1,Polycarbonate,Custom Fabrication,45.00,45.00,3mm wall thickness
+WS-003,Housing Gasket,1,Silicone Rubber,McMaster-Carr,3.50,3.50,Shore A 50
+WS-004,Sample Bottle 1L,1,PET,Cole-Parmer,8.00,8.00,Wide mouth with screw cap
+WS-005,Bottle Cap with Gasket,1,HDPE/Silicone,Cole-Parmer,2.50,2.50,Leakproof seal
+WS-006,Quick Release Mechanism,1,Stainless Steel,Custom Fabrication,25.00,25.00,180-degree twist lock
+WS-007,Peristaltic Pump 12V,1,Motor Assembly,Adafruit,35.00,35.00,100 mL/min flow rate
+WS-008,Pump Tubing Silicone,1,Silicone,Cole-Parmer,12.00,12.00,6mm ID x 1m length
+WS-009,Suction Pipe Main,1,SS 316L,McMaster-Carr,28.00,28.00,10mm OD x 500mm
+WS-010,Pipe Extension Telescopic,1,SS 316L,McMaster-Carr,22.00,22.00,10mm OD x 500mm
+WS-011,Pipe End Filter,1,Stainless Mesh,McMaster-Carr,6.50,6.50,100 mesh filter
+WS-012,Mounting Bracket Set,4,Aluminum 6061-T6,Custom CNC,15.00,60.00,30mm spacing pattern
+WS-013,M4x16 Socket Head Screws,16,Stainless Steel,McMaster-Carr,0.25,4.00,ISO 4762
+WS-014,M4 Lock Washers,16,Stainless Steel,McMaster-Carr,0.10,1.60,Split washers
+WS-015,M4 Hex Nuts,16,Stainless Steel,McMaster-Carr,0.15,2.40,DIN 934
+WS-016,Cable Gland PG7,2,Nylon,McMaster-Carr,1.80,3.60,IP68 rated
+WS-017,Cable Gland PG9,2,Nylon,McMaster-Carr,2.20,4.40,IP68 rated
+WS-018,Status LED Window,1,Acrylic,TAP Plastics,4.50,4.50,Clear 3mm thickness
+WS-019,Rubber Feet,4,EPDM Rubber,McMaster-Carr,1.25,5.00,Vibration damping
+WS-020,Wire Harness 22AWG,1,Copper/PVC,Digi-Key,8.50,8.50,2m length multi-conductor
+WS-021,JST Connectors,4,Plastic/Metal,Digi-Key,1.50,6.00,2-pin and 4-pin
+WS-022,Inlet Check Valve,1,Brass,McMaster-Carr,9.50,9.50,1/4" NPT
+WS-023,Outlet Check Valve,1,Brass,McMaster-Carr,9.50,9.50,1/4" NPT
+WS-024,Pressure Relief Valve,1,Brass,McMaster-Carr,12.00,12.00,Safety feature
+WS-025,Vent Plug with Filter,1,Plastic,McMaster-Carr,3.25,3.25,Breathing membrane
+WS-026,Adhesive Sealant,1,Silicone RTV,Loctite,8.75,8.75,85g tube
+WS-027,Thread Sealant Tape,1,PTFE,McMaster-Carr,2.50,2.50,1/2" x 520"
+WS-028,Label Plate Engraved,1,Aluminum,Custom,12.00,12.00,Specifications plate
+WS-029,Anti-vibration Mounts,4,Rubber,McMaster-Carr,3.75,15.00,M4 threaded
+WS-030,Protective Cap for Pipe,1,Rubber,McMaster-Carr,2.50,2.50,Transport protection
+
+Subtotal,,,,,432.45,
+Shipping & Handling,,,,,35.00,
+Tax (8%),,,,,34.60,
+Total Cost,,,,,502.05,
+
+Notes:
+- All stainless steel parts are marine-grade 316L for corrosion resistance
+- Polycarbonate housing can be injection molded for mass production (tooling cost separate)
+- Custom fabrication parts include CNC machining and finishing
+- Prices are approximate and subject to change based on quantity and supplier
+- Lead time: 4-6 weeks for custom parts, 1-2 weeks for off-the-shelf components
+- Assembly time: 4-6 hours per unit (first build may take longer)
