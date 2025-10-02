@@ -1,0 +1,247 @@
+solid WaterSampler
+  facet normal 0 0 1
+    outer loop
+      vertex 0 0 0
+      vertex 250 0 0
+      vertex 250 150 0
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 0 0 0
+      vertex 250 150 0
+      vertex 0 150 0
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 0 0 200
+      vertex 0 150 200
+      vertex 250 150 200
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 0 0 200
+      vertex 250 150 200
+      vertex 250 0 200
+    endloop
+  endfacet
+  facet normal 0 1 0
+    outer loop
+      vertex 0 150 0
+      vertex 250 150 0
+      vertex 250 150 200
+    endloop
+  endfacet
+  facet normal 0 1 0
+    outer loop
+      vertex 0 150 0
+      vertex 250 150 200
+      vertex 0 150 200
+    endloop
+  endfacet
+  facet normal 0 -1 0
+    outer loop
+      vertex 0 0 0
+      vertex 0 0 200
+      vertex 250 0 200
+    endloop
+  endfacet
+  facet normal 0 -1 0
+    outer loop
+      vertex 0 0 0
+      vertex 250 0 200
+      vertex 250 0 0
+    endloop
+  endfacet
+  facet normal 1 0 0
+    outer loop
+      vertex 250 0 0
+      vertex 250 0 200
+      vertex 250 150 200
+    endloop
+  endfacet
+  facet normal 1 0 0
+    outer loop
+      vertex 250 0 0
+      vertex 250 150 200
+      vertex 250 150 0
+    endloop
+  endfacet
+  facet normal -1 0 0
+    outer loop
+      vertex 0 0 0
+      vertex 0 150 0
+      vertex 0 150 200
+    endloop
+  endfacet
+  facet normal -1 0 0
+    outer loop
+      vertex 0 0 0
+      vertex 0 150 200
+      vertex 0 0 200
+    endloop
+  endfacet
+endsolid WaterSampler
+
+solid SampleBottle
+  facet normal 0 0 1
+    outer loop
+      vertex 70 45 10
+      vertex 180 45 10
+      vertex 180 105 10
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 70 45 10
+      vertex 180 105 10
+      vertex 70 105 10
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 70 45 190
+      vertex 70 105 190
+      vertex 180 105 190
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 70 45 190
+      vertex 180 105 190
+      vertex 180 45 190
+    endloop
+  endfacet
+endsolid SampleBottle
+
+solid SuctionPipe
+  facet normal 0 0 1
+    outer loop
+      vertex 120 70 10
+      vertex 130 70 10
+      vertex 130 80 10
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 120 70 10
+      vertex 130 80 10
+      vertex 120 80 10
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 120 70 -490
+      vertex 120 80 -490
+      vertex 130 80 -490
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 120 70 -490
+      vertex 130 80 -490
+      vertex 130 70 -490
+    endloop
+  endfacet
+endsolid SuctionPipe
+
+solid PumpHousing
+  facet normal 0 0 1
+    outer loop
+      vertex 30 25 50
+      vertex 110 25 50
+      vertex 110 85 50
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 30 25 50
+      vertex 110 85 50
+      vertex 30 85 50
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 30 25 100
+      vertex 30 85 100
+      vertex 110 85 100
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 30 25 100
+      vertex 110 85 100
+      vertex 110 25 100
+    endloop
+  endfacet
+endsolid PumpHousing
+
+solid MountBracket1
+  facet normal 0 0 1
+    outer loop
+      vertex 10 10 195
+      vertex 40 10 195
+      vertex 40 40 195
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 10 10 195
+      vertex 40 40 195
+      vertex 10 40 195
+    endloop
+  endfacet
+endsolid MountBracket1
+
+solid MountBracket2
+  facet normal 0 0 1
+    outer loop
+      vertex 210 10 195
+      vertex 240 10 195
+      vertex 240 40 195
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 210 10 195
+      vertex 240 40 195
+      vertex 210 40 195
+    endloop
+  endfacet
+endsolid MountBracket2
+
+solid MountBracket3
+  facet normal 0 0 1
+    outer loop
+      vertex 10 110 195
+      vertex 40 110 195
+      vertex 40 140 195
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 10 110 195
+      vertex 40 140 195
+      vertex 10 140 195
+    endloop
+  endfacet
+endsolid MountBracket3
+
+solid MountBracket4
+  facet normal 0 0 1
+    outer loop
+      vertex 210 110 195
+      vertex 240 110 195
+      vertex 240 140 195
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 210 110 195
+      vertex 240 140 195
+      vertex 210 140 195
+    endloop
+  endfacet
+endsolid MountBracket4

@@ -1,0 +1,52 @@
+Ref Des,Quantity,Value,Description,Package,Manufacturer,Part Number,Supplier,Supplier Part Number,Unit Price (USD),Extended Price (USD)
+U1,1,ESP32-WROOM-32,ESP32 WiFi/BT Module,SMD,Espressif,ESP32-WROOM-32,Digi-Key,1904-1010-1-ND,3.95,3.95
+U2,1,L298N,Dual H-Bridge Motor Driver,Multiwatt-15,STMicroelectronics,L298N,Digi-Key,497-2043-5-ND,4.23,4.23
+U3,1,AMS1117-3.3,3.3V LDO Regulator 1A,SOT-223,Advanced Monolithic Systems,AMS1117-3.3,Digi-Key,1203-1550-1-ND,0.45,0.45
+U4,1,AMS1117-5.0,5.0V LDO Regulator 1A,SOT-223,Advanced Monolithic Systems,AMS1117-5.0,Digi-Key,1203-1551-1-ND,0.45,0.45
+U5,1,RFM95W,LoRa Transceiver Module 915MHz,SMD Module,HopeRF,RFM95W-915S2,Digi-Key,1568-1278-ND,8.95,8.95
+U6,1,NEO-6M,GPS Module,SMD Module,u-blox,NEO-6M,SparkFun,GPS-15210,39.95,39.95
+U7,1,MCP3008,8-Channel 10-bit ADC SPI,DIP-16/SOIC-16,Microchip,MCP3008-I/P,Digi-Key,MCP3008-I/P-ND,3.48,3.48
+Q1,4,2N2222,NPN Transistor,TO-92,ON Semiconductor,2N2222A,Digi-Key,2N2222ACS-ND,0.35,1.40
+D1,1,1N5819,Schottky Diode 1A 40V,DO-41,ON Semiconductor,1N5819,Digi-Key,1N5819-E3/54GICT-ND,0.32,0.32
+D2-D4,3,LED Red,5mm LED Red,5mm TH,Generic,LED-RED-5MM,Digi-Key,C503B-RCN-CW0Z0AA1-ND,0.28,0.84
+D5,1,LED Green,5mm LED Green,5mm TH,Generic,LED-GRN-5MM,Digi-Key,C503B-GCN-CY0C0791-ND,0.28,0.28
+D6,1,LED Blue,5mm LED Blue,5mm TH,Generic,LED-BLU-5MM,Digi-Key,C503B-BCN-CV0Z0461-ND,0.35,0.35
+R1-R6,6,10K,Resistor 10K 1/4W,0805/TH,Generic,RES-10K,Digi-Key,CF14JT10K0CT-ND,0.10,0.60
+R7-R12,6,330,Resistor 330 1/4W,0805/TH,Generic,RES-330,Digi-Key,CF14JT330RCT-ND,0.10,0.60
+R13,1,4.7K,Resistor 4.7K 1/4W,0805/TH,Generic,RES-4K7,Digi-Key,CF14JT4K70CT-ND,0.10,0.10
+C1-C4,4,100nF,Ceramic Capacitor,0805/TH,Generic,CAP-100N,Digi-Key,399-4151-1-ND,0.10,0.40
+C5-C6,2,10uF,Electrolytic Capacitor,Radial,Generic,CAP-10U-25V,Digi-Key,P5178-ND,0.25,0.50
+C7-C8,2,22uF,Electrolytic Capacitor,Radial,Generic,CAP-22U-25V,Digi-Key,P5180-ND,0.30,0.60
+C9-C10,2,1000uF,Electrolytic Capacitor,Radial,Generic,CAP-1000U-16V,Digi-Key,P5556-ND,0.75,1.50
+J1,1,BNC,BNC Connector Female,TH,Amphenol,BNC-FEMALE,Digi-Key,A97555-ND,2.35,2.35
+J2,1,JST-XH 4Pin,JST-XH Connector 4Pin,TH,JST,B4B-XH-A,Digi-Key,455-2249-ND,0.65,0.65
+J3,1,JST-XH 2Pin,JST-XH Connector 2Pin,TH,JST,B2B-XH-A,Digi-Key,455-2247-ND,0.55,0.55
+J4,1,JST-XH 3Pin,JST-XH Connector 3Pin,TH,JST,B3B-XH-A,Digi-Key,455-2248-ND,0.60,0.60
+J5,1,MicroSD,MicroSD Card Socket,SMD,Molex,502774-0891,Digi-Key,WM9731CT-ND,1.42,1.42
+J6,1,Screw Terminal 2P,Terminal Block 2-pos 5mm,TH,Phoenix,1757019,Digi-Key,277-1247-ND,0.85,0.85
+SW1,1,SPST,Tactile Switch,6x6mm TH,Generic,TACT-SW,Digi-Key,450-1650-ND,0.25,0.25
+SW2,1,SPDT,Slide Switch,TH,Generic,SLIDE-SW,Digi-Key,CKN9559CT-ND,0.75,0.75
+BZ1,1,5V Buzzer,Piezo Buzzer 5V,12mm TH,TDK,PS1240,Digi-Key,445-2525-1-ND,1.12,1.12
+X1,1,DS18B20,Temperature Sensor,TO-92,Maxim,DS18B20,Digi-Key,DS18B20+-ND,3.85,3.85
+BAT1,1,2S LiPo,Battery Connector JST,TH,JST,SM02B-SRSS-TB,Digi-Key,455-1749-1-ND,0.45,0.45
+F1,1,2A,Resettable Fuse PTC 2A,Radial,Littelfuse,RXEF020,Digi-Key,F2682CT-ND,0.35,0.35
+-,1,PCB,2-Layer PCB 100x80mm,PCB,OSH Park,PCB-100x80,OSH Park,Custom,25.00,25.00
+-,1,-,pH Sensor with BNC,External,Atlas Scientific,ENV-SEN-PH,Atlas Scientific,ENV-SEN-PH,65.00,65.00
+-,1,-,Turbidity Sensor Analog,External,DFRobot,SEN0189,DFRobot,SEN0189,9.90,9.90
+
+Subtotal:,,,,,,,,,195.95
+Shipping:,,,,,,,,,15.00
+Tax (8%):,,,,,,,,,15.68
+Total:,,,,,,,,,226.63
+
+Notes:
+1. All SMD components are optional - through-hole alternatives available
+2. PCB design is 2-layer for easy manufacturing
+3. External sensors (pH and turbidity) connect via provided connectors
+4. LiPo battery not included - recommend 7.4V 2200mAh 2S
+5. GPS and LoRa modules require external antennas (not included)
+6. Prices subject to change based on quantity and supplier availability
+7. Lead time: 2-3 weeks for PCB fabrication, components available stock
+
+Assembly Level: Intermediate (soldering required)
+Estimated Assembly Time: 3-4 hours

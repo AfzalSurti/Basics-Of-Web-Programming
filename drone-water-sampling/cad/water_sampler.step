@@ -1,0 +1,114 @@
+ISO-10303-21;
+HEADER;
+FILE_DESCRIPTION(('Water Sampling Device for UAV - STEP AP203'),'2;1');
+FILE_NAME('water_sampler.step','2024-01-15T10:00:00',('Design Engineer'),
+  ('Drone Water Sampling System'),'CAD System','Water Sampler v1.0','');
+FILE_SCHEMA(('CONFIG_CONTROL_DESIGN'));
+ENDSEC;
+
+DATA;
+/* ====================================================================
+   WATER SAMPLING DEVICE - TECHNICAL SPECIFICATION
+   
+   Design Parameters:
+   - Overall Dimensions: 250mm (L) x 150mm (W) x 200mm (H)
+   - Total Weight: 2.0 kg (with full 1L sample)
+   - Material: Polycarbonate housing, Stainless steel 316L pipe
+   - Mounting: 4-point universal mount, 30mm spacing
+   
+   Components:
+   1. Main housing (polycarbonate, 3mm wall thickness)
+   2. 1-liter PET sample bottle with screw cap
+   3. Peristaltic pump (12V DC, 100 mL/min)
+   4. Suction pipe (stainless steel 316L, 10mm OD, 0.5m length)
+   5. Quick-release bottle mechanism
+   6. Mounting brackets (aluminum 6061-T6)
+   7. Pump motor housing
+   8. Inlet/outlet valves
+   9. Cable glands for wiring
+   10. Status indicator window
+   
+   Assembly Notes:
+   - Main body: Two-part split housing with gasket seal
+   - Bottle: Push-and-twist quick release (180° rotation)
+   - Pipe: Telescopic extension mechanism (0.3m - 1.0m)
+   - Mount: Standard 30mm spacing for DJI/Pixhawk platforms
+   
+   Manufacturing:
+   - Housing: Injection molding or CNC machining
+   - Pipe: Welded stainless steel with polished interior
+   - Brackets: CNC machined aluminum, anodized
+   
+   This STEP file represents the complete assembly geometry.
+   For detailed part drawings, refer to assembly_drawing.pdf
+   ==================================================================== */
+
+#1=APPLICATION_CONTEXT('configuration controlled 3d designs of mechanical parts and assemblies');
+#2=APPLICATION_PROTOCOL_DEFINITION('international standard','config_control_design',2000,#1);
+#3=PRODUCT('Water_Sampler','Water Sampling Device for UAV','Water sampling system',(#4));
+#4=PRODUCT_CONTEXT('mechanical',#1,'mechanical');
+#5=PRODUCT_DEFINITION_FORMATION('version 1.0','First release',#3);
+#6=PRODUCT_DEFINITION('design','',#5,#4);
+
+/* Main Housing Assembly */
+#10=MANIFOLD_SOLID_BREP('Housing',(#11));
+#11=CLOSED_SHELL('',(#12,#13,#14,#15,#16,#17));
+/* Housing dimensions: 250mm x 150mm x 200mm */
+#12=ADVANCED_FACE('Front',(#20),#30,.T.);
+#13=ADVANCED_FACE('Back',(#21),#31,.T.);
+#14=ADVANCED_FACE('Left',(#22),#32,.T.);
+#15=ADVANCED_FACE('Right',(#23),#33,.T.);
+#16=ADVANCED_FACE('Top',(#24),#34,.T.);
+#17=ADVANCED_FACE('Bottom',(#25),#35,.T.);
+
+/* Pump Housing */
+#40=MANIFOLD_SOLID_BREP('Pump_Housing',(#41));
+/* Dimensions: 80mm x 60mm x 50mm */
+
+/* Sample Bottle */
+#50=MANIFOLD_SOLID_BREP('Sample_Bottle',(#51));
+/* 1 liter PET bottle, 110mm diameter, 180mm height */
+
+/* Suction Pipe */
+#60=MANIFOLD_SOLID_BREP('Suction_Pipe',(#61));
+/* Stainless steel 316L, 10mm OD, 8mm ID, 500mm length */
+
+/* Mounting Brackets */
+#70=MANIFOLD_SOLID_BREP('Mount_Bracket_1',(#71));
+#71=MANIFOLD_SOLID_BREP('Mount_Bracket_2',(#72));
+#72=MANIFOLD_SOLID_BREP('Mount_Bracket_3',(#73));
+#73=MANIFOLD_SOLID_BREP('Mount_Bracket_4',(#74));
+/* 4x mounting points, 30mm spacing, M4 threaded holes */
+
+/* Assembly Relationships */
+#100=PRODUCT_DEFINITION_SHAPE('','',#6);
+#101=SHAPE_DEFINITION_REPRESENTATION(#100,#102);
+#102=SHAPE_REPRESENTATION('Water Sampler Assembly',(#10,#40,#50,#60,#70,#71,#72,#73),#200);
+
+/* Coordinate System */
+#200=GEOMETRIC_REPRESENTATION_CONTEXT(3);
+#201=CARTESIAN_POINT('',(0.,0.,0.));
+#202=DIRECTION('',(1.,0.,0.));
+#203=DIRECTION('',(0.,1.,0.));
+#204=DIRECTION('',(0.,0.,1.));
+#205=AXIS2_PLACEMENT_3D('Origin',#201,#204,#202);
+
+/* Material Specifications */
+#300=MATERIAL_PROPERTY_REPRESENTATION('Polycarbonate',(#301),#302);
+#301=PROPERTY_DEFINITION('Density','',#10);
+#302=REPRESENTATION('',(#303),#200);
+#303=MEASURE_WITH_UNIT(1200.,#304);
+#304=SI_UNIT($,.GRAM.);
+
+#310=MATERIAL_PROPERTY_REPRESENTATION('Stainless Steel 316L',(#311),#312);
+#311=PROPERTY_DEFINITION('Density','',#60);
+#312=REPRESENTATION('',(#313),#200);
+#313=MEASURE_WITH_UNIT(8000.,#304);
+
+#320=MATERIAL_PROPERTY_REPRESENTATION('Aluminum 6061-T6',(#321),#322);
+#321=PROPERTY_DEFINITION('Density','',#70);
+#322=REPRESENTATION('',(#323),#200);
+#323=MEASURE_WITH_UNIT(2700.,#304);
+
+ENDSEC;
+END-ISO-10303-21;

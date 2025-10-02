@@ -1,0 +1,240 @@
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 792 612]
+/Contents 4 0 R
+/Resources <<
+  /Font <<
+    /F1 5 0 R
+    /F2 6 0 R
+  >>
+>>
+>>
+endobj
+
+4 0 obj
+<<
+/Length 3850
+>>
+stream
+BT
+/F1 18 Tf
+250 550 Td
+(WATER SAMPLING DEVICE - ASSEMBLY DRAWING) Tj
+ET
+
+BT
+/F2 10 Tf
+50 520 Td
+(Drawing Number: WS-ASM-001) Tj
+ET
+
+BT
+/F2 10 Tf
+550 520 Td
+(Sheet: 1 of 1) Tj
+ET
+
+BT
+/F2 10 Tf
+50 500 Td
+(Date: 2024-01-15) Tj
+ET
+
+BT
+/F2 10 Tf
+550 500 Td
+(Scale: 1:5) Tj
+ET
+
+% Title Block
+50 40 m
+742 40 l
+742 100 l
+50 100 l
+50 40 l
+S
+
+% Main View Title
+BT
+/F1 12 Tf
+50 470 Td
+(OVERALL DIMENSIONS) Tj
+ET
+
+% Front View Rectangle
+100 250 m
+500 250 l
+500 400 l
+100 400 l
+100 250 l
+S
+
+% Dimension Lines
+BT
+/F2 9 Tf
+280 235 Td
+(250 mm) Tj
+ET
+
+BT
+/F2 9 Tf
+520 315 Td
+(200 mm) Tj
+ET
+
+% Side View Title
+BT
+/F1 12 Tf
+50 220 Td
+(KEY DIMENSIONS) Tj
+ET
+
+% Specifications Table
+BT
+/F2 9 Tf
+50 190 Td
+(Overall Length: 250 mm) Tj
+0 -12 Td
+(Overall Width: 150 mm) Tj
+0 -12 Td
+(Overall Height: 200 mm) Tj
+0 -12 Td
+(Weight: 2.0 kg \(with sample\)) Tj
+0 -12 Td
+(Bottle Capacity: 1000 mL) Tj
+0 -12 Td
+(Suction Pipe Reach: 300-1000 mm) Tj
+0 -12 Td
+(Mounting Points: 4x M4 threaded, 30mm spacing) Tj
+ET
+
+% Components List Title
+BT
+/F1 12 Tf
+400 220 Td
+(COMPONENT LIST) Tj
+ET
+
+% Components
+BT
+/F2 8 Tf
+400 190 Td
+(1. Main Housing \(Polycarbonate\)) Tj
+0 -10 Td
+(2. Sample Bottle 1L \(PET\)) Tj
+0 -10 Td
+(3. Peristaltic Pump 12V) Tj
+0 -10 Td
+(4. Suction Pipe \(SS 316L\)) Tj
+0 -10 Td
+(5. Quick-Release Mechanism) Tj
+0 -10 Td
+(6. Mounting Brackets \(4x\)) Tj
+0 -10 Td
+(7. Cable Glands) Tj
+0 -10 Td
+(8. Check Valves \(2x\)) Tj
+0 -10 Td
+(9. Status LED Window) Tj
+0 -10 Td
+(10. Rubber Feet \(4x\)) Tj
+ET
+
+% Assembly Notes
+BT
+/F1 10 Tf
+50 100 Td
+(ASSEMBLY NOTES:) Tj
+ET
+
+BT
+/F2 8 Tf
+50 85 Td
+(1. Ensure all O-rings and gaskets are properly seated before assembly) Tj
+0 -10 Td
+(2. Torque all M4 fasteners to 3.0 Nm) Tj
+0 -10 Td
+(3. Apply thread sealant to all threaded pipe connections) Tj
+0 -10 Td
+(4. Test bottle quick-release mechanism before installation) Tj
+0 -10 Td
+(5. Verify pump rotation direction before first use) Tj
+0 -10 Td
+(6. Install pipe filter before deploying in water) Tj
+ET
+
+% Materials
+BT
+/F1 10 Tf
+400 100 Td
+(MATERIALS:) Tj
+ET
+
+BT
+/F2 8 Tf
+400 85 Td
+(Housing: Polycarbonate, 3mm wall) Tj
+0 -10 Td
+(Pipe: Stainless Steel 316L) Tj
+0 -10 Td
+(Brackets: Aluminum 6061-T6) Tj
+0 -10 Td
+(Gaskets: Silicone Rubber) Tj
+0 -10 Td
+(Fasteners: SS A2-70) Tj
+ET
+
+endstream
+endobj
+
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-Bold
+>>
+endobj
+
+6 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+
+xref
+0 7
+0000000000 65535 f
+0000000009 00000 n
+0000000058 00000 n
+0000000115 00000 n
+0000000274 00000 n
+0000004176 00000 n
+0000004264 00000 n
+trailer
+<<
+/Size 7
+/Root 1 0 R
+>>
+startxref
+4347
+%%EOF

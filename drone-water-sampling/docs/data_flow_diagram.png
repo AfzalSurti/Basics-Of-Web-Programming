@@ -1,0 +1,270 @@
+# Data Flow Diagram - Water Sampling System
+# Text-based representation of data flow
+# For actual PNG, use diagramming tool
+
+==============================================================================
+                         DATA FLOW DIAGRAM
+          Drone-Based Water Sampling System
+==============================================================================
+
+┌────────────────────────────────────────────────────────────────────────┐
+│                         MISSION PHASE 1: SETUP                          │
+└────────────────────────────────────────────────────────────────────────┘
+
+  ┌──────────────┐                                    ┌─────────────────┐
+  │   Operator   │                                    │  Configuration  │
+  │              │──────Mission Parameters────────────▶│  Files (YAML)  │
+  └──────┬───────┘                                    └────────┬────────┘
+         │                                                     │
+         │ Input                                              │ Load
+         ▼                                                     ▼
+  ┌───────────────────┐                            ┌──────────────────────┐
+  │ Ground Control    │                            │  Mission Script      │
+  │ Station (GCS)     │◄───────Load Config─────────┤  (Python/DroneKit)  │
+  └───────┬───────────┘                            └──────────────────────┘
+          │
+          │ Mission Upload
+          │ (MAVLink)
+          ▼
+  ┌────────────────────┐
+  │   UAV Flight       │
+  │   Controller       │
+  │   (Pixhawk)        │
+  └────────────────────┘
+
+==============================================================================
+
+┌────────────────────────────────────────────────────────────────────────┐
+│                    MISSION PHASE 2: FLIGHT & NAVIGATION                 │
+└────────────────────────────────────────────────────────────────────────┘
+
+  ┌────────────────────┐
+  │   GPS Satellites   │
+  │   (8+ satellites)  │
+  └─────────┬──────────┘
+            │ NMEA Data
+            │ (10Hz)
+            ▼
+  ┌────────────────────┐         Waypoints          ┌──────────────────┐
+  │  NEO-6M GPS        │         & Commands         │  Pixhawk Flight  │
+  │  Module (UAV)      │────────────────────────────▶│  Controller      │
+  └────────────────────┘                            └────────┬─────────┘
+            │                                               │
+            │ Position Data                                 │ Control
+            │ (UART @ 9600)                                │ Signals
+            ▼                                               ▼
+  ┌────────────────────┐                            ┌──────────────────┐
+  │  ESP32 Controller  │                            │  Motors & ESCs   │
+  │  (Monitoring)      │                            │  (Flight)        │
+  └────────────────────┘                            └──────────────────┘
+
+  Telemetry Loop (Every 10 seconds):
+  Position → ESP32 → LoRa → GCS → Display → Operator
+
+==============================================================================
+
+┌────────────────────────────────────────────────────────────────────────┐
+│                   MISSION PHASE 3: WATER SAMPLING                       │
+└────────────────────────────────────────────────────────────────────────┘
+
+  ┌────────────────────┐
+  │  Operator Command  │
+  │  "Start Sampling"  │
+  └─────────┬──────────┘
+            │ LoRa Command
+            │ (915/868 MHz)
+            ▼
+  ┌─────────────────────────────────────────────────────────────┐
+  │                    ESP32 Main Controller                     │
+  │                                                              │
+  │  ┌────────────────┐                                         │
+  │  │ Command Parser │◄─────Validate Command                   │
+  │  └────────┬───────┘                                         │
+  │           │                                                  │
+  │           ▼                                                  │
+  │  ┌────────────────┐      GPIO Control      ┌──────────────┐│
+  │  │ Pump Controller│──────PWM Signal────────▶│ L298N Driver ││
+  │  └────────────────┘                         └──────┬───────┘│
+  │                                                    │         │
+  └────────────────────────────────────────────────────┼─────────┘
+                                                       │ 12V DC
+                                                       ▼
+                                            ┌────────────────────┐
+                                            │ Peristaltic Pump   │
+                                            │ (100 mL/min)       │
+                                            └─────────┬──────────┘
+                                                      │ Suction
+                                                      ▼
+                   Water Source ────────▶ ┌─────────────────────┐
+                   (Lake/River)           │  Sample Bottle      │
+                                          │  (Filling)          │
+                                          └─────────────────────┘
+
+  Simultaneously:
+
+  ┌────────────────┐     Analog Signal     ┌────────────────────┐
+  │  pH Sensor     │────(via BNC)──────────▶│  MCP3008 ADC      │
+  │  (In Water)    │                        │  (Channel 0)       │
+  └────────────────┘                        └─────────┬──────────┘
+                                                      │ SPI Data
+  ┌────────────────┐     Analog Signal               │
+  │  Turbidity     │───────────────────────────────  │
+  │  Sensor        │                                  │
+  └────────────────┘     (Channel 1)                 ▼
+                                            ┌────────────────────┐
+  ┌────────────────┐     1-Wire Protocol   │  ESP32 Controller  │
+  │  DS18B20 Temp  │────────────────────────▶│  (Data Processing)│
+  │  Sensor        │                        └─────────┬──────────┘
+  └────────────────┘                                  │
+                                                      │
+                                                      ▼
+                   ┌──────────────────────────────────────────────┐
+                   │           Data Processing Pipeline           │
+                   │                                              │
+                   │  1. Raw ADC Values → Voltage Conversion     │
+                   │  2. Voltage → Physical Units (pH, NTU, °C) │
+                   │  3. Apply Calibration Coefficients          │
+                   │  4. Filter/Average (10 samples)             │
+                   │  5. Validate Range                          │
+                   │  6. Create Data Packet                      │
+                   └───────────────────┬──────────────────────────┘
+                                       │
+                    ┌──────────────────┴──────────────────┐
+                    │                                     │
+                    ▼                                     ▼
+          ┌──────────────────┐              ┌──────────────────────┐
+          │  microSD Logger  │              │  LoRa Transmitter   │
+          │  (Local Storage) │              │  (Real-time)        │
+          └──────────────────┘              └──────────┬───────────┘
+                    │                                  │
+                    │ Write CSV                        │ RF Signal
+                    ▼                                  ▼
+          ┌──────────────────┐              ┌──────────────────────┐
+          │  SD Card File    │              │  Ground Station RX   │
+          │  water_data.csv  │              │  (LoRa Module)       │
+          └──────────────────┘              └──────────┬───────────┘
+                                                       │ Serial
+                                                       │ (USB)
+                                                       ▼
+                                            ┌──────────────────────┐
+                                            │  GCS Computer        │
+                                            │  telemetry_receiver  │
+                                            │  .py                 │
+                                            └──────────┬───────────┘
+                                                       │
+                                                       ▼
+                                            ┌──────────────────────┐
+                                            │  Web Dashboard       │
+                                            │  (dashboard.html)    │
+                                            │  - Real-time display │
+                                            │  - Charts & graphs   │
+                                            │  - Status indicators │
+                                            └──────────────────────┘
+
+==============================================================================
+
+┌────────────────────────────────────────────────────────────────────────┐
+│                  MISSION PHASE 4: RETURN & POST-PROCESSING              │
+└────────────────────────────────────────────────────────────────────────┘
+
+  ┌────────────────┐
+  │  Sampling      │
+  │  Complete      │
+  └────────┬───────┘
+           │ Status Update
+           ▼
+  ┌────────────────────┐      RTL Command      ┌──────────────────┐
+  │  ESP32 Controller  │──────────────────────▶│ Flight Controller│
+  └────────────────────┘                       └────────┬─────────┘
+           │                                            │
+           │ Final Data                                 │ Navigate
+           │ Transmission                               │ Home
+           ▼                                            ▼
+  ┌────────────────────┐                       ┌──────────────────┐
+  │  LoRa → GCS        │                       │  Landing Pad     │
+  │  (Complete Log)    │                       │  (Disarm)        │
+  └────────────────────┘                       └──────────────────┘
+
+  Post-Flight Data Processing:
+
+  ┌────────────────────┐
+  │  Retrieve SD Card  │
+  │  from UAV          │
+  └─────────┬──────────┘
+            │ USB Card Reader
+            ▼
+  ┌────────────────────────────────────────────┐
+  │  Computer - Data Analysis                  │
+  │                                            │
+  │  1. Import CSV files                       │
+  │  2. Merge telemetry logs                   │
+  │  3. Plot time series                       │
+  │  4. Calculate statistics                   │
+  │  5. Generate GPS map                       │
+  │  6. Create PDF report                      │
+  │  7. Archive data                           │
+  └───────────────────┬────────────────────────┘
+                      │
+         ┌────────────┼────────────┐
+         │            │            │
+         ▼            ▼            ▼
+  ┌───────────┐ ┌─────────┐ ┌──────────┐
+  │ Database  │ │ Cloud   │ │ Lab      │
+  │ Storage   │ │ Backup  │ │ Analysis │
+  └───────────┘ └─────────┘ └──────────┘
+
+==============================================================================
+                          DATA PACKET STRUCTURE
+==============================================================================
+
+Telemetry Packet (ASCII Format):
+┌────────────────────────────────────────────────────────────────────┐
+│ WQM | 123 | 1845 | 7.2 | 15.5 | 18.3 | 37.7749 | -122.4194 | ... │
+└────────────────────────────────────────────────────────────────────┘
+  │     │     │      │     │      │       │          │
+  │     │     │      │     │      │       │          └─ Longitude
+  │     │     │      │     │      │       └─ Latitude
+  │     │     │      │     │      └─ Temperature (°C)
+  │     │     │      │     └─ Turbidity (NTU)
+  │     │     │      └─ pH Value
+  │     │     └─ System Uptime (seconds)
+  │     └─ Packet ID (sequential)
+  └─ Header ("Water Quality Monitor")
+
+SD Card Log Entry (CSV Format):
+┌─────────────────────────────────────────────────────────────────────┐
+│ Timestamp, pH, Turbidity, Temp, Lat, Lon, Alt, Sats, Battery      │
+│ 1705334400, 7.2, 15.5, 18.3, 37.774900, -122.419400, 0.5, 10, 95 │
+└─────────────────────────────────────────────────────────────────────┘
+
+==============================================================================
+                            DATA FLOW RATES
+==============================================================================
+
+Sensor Sampling:
+- pH: Continuous (averaged over 10 samples)
+- Turbidity: Continuous (averaged over 10 samples)
+- Temperature: 1Hz (DS18B20 conversion time ~750ms)
+- GPS: 10Hz (position updates)
+
+Data Logging:
+- SD Card: Every 5 seconds (CSV append)
+- LoRa TX: Every 10 seconds (complete packet)
+- Real-time Display: Upon reception
+
+Data Volumes (Typical 20-minute mission):
+- SD Card Log: ~240 entries × 100 bytes = 24 KB
+- LoRa Telemetry: ~120 packets × 80 bytes = 9.6 KB
+- Total Data: ~30-50 KB per mission
+
+==============================================================================
+
+To create actual PNG diagram:
+1. Use draw.io or similar tool
+2. Create flowchart with swim lanes
+3. Color-code by system (UAV, Sensors, GCS)
+4. Add icons for components
+5. Export as high-resolution PNG
+6. Save to this location
+
+==============================================================================

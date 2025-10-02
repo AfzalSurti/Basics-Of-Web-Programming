@@ -1,0 +1,444 @@
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 842 595]
+/Contents 4 0 R
+/Resources <<
+  /Font <<
+    /F1 5 0 R
+    /F2 6 0 R
+  >>
+>>
+>>
+endobj
+
+4 0 obj
+<<
+/Length 5200
+>>
+stream
+BT
+/F1 16 Tf
+300 560 Td
+(ESP32 WATER QUALITY MONITORING SYSTEM - SCHEMATIC) Tj
+ET
+
+BT
+/F2 9 Tf
+50 545 Td
+(Sheet: 1 of 1) Tj
+ET
+
+BT
+/F2 9 Tf
+700 545 Td
+(Rev: 1.0) Tj
+ET
+
+BT
+/F2 9 Tf
+50 530 Td
+(Date: 2024-01-15) Tj
+ET
+
+% Power Supply Section
+50 480 m
+250 480 l
+250 380 l
+50 380 l
+50 480 l
+S
+
+BT
+/F1 10 Tf
+55 485 Td
+(POWER SUPPLY) Tj
+ET
+
+BT
+/F2 8 Tf
+60 460 Td
+(BAT1: 7.4V LiPo Input) Tj
+0 -12 Td
+(F1: PTC Fuse 2A) Tj
+0 -12 Td
+(U3: AMS1117-3.3 \(3.3V/1A\)) Tj
+0 -12 Td
+(U4: AMS1117-5.0 \(5.0V/1A\)) Tj
+0 -12 Td
+(C9,C10: 1000uF filter caps) Tj
+0 -12 Td
+(D1: 1N5819 reverse protection) Tj
+ET
+
+% ESP32 Section
+270 480 m
+470 480 l
+470 380 l
+270 380 l
+270 480 l
+S
+
+BT
+/F1 10 Tf
+275 485 Td
+(ESP32-WROOM-32) Tj
+ET
+
+BT
+/F2 8 Tf
+280 460 Td
+(U1: ESP32 Main Controller) Tj
+0 -12 Td
+(GPIO4: LoRa CS) Tj
+0 -12 Td
+(GPIO5: LoRa SCK) Tj
+0 -12 Td
+(GPIO18: LoRa MISO) Tj
+0 -12 Td
+(GPIO19: LoRa MOSI) Tj
+0 -12 Td
+(GPIO16: GPS RX) Tj
+0 -12 Td
+(GPIO17: GPS TX) Tj
+ET
+
+% Sensor Interface Section
+490 480 m
+690 480 l
+690 380 l
+490 380 l
+490 480 l
+S
+
+BT
+/F1 10 Tf
+495 485 Td
+(SENSOR INTERFACE) Tj
+ET
+
+BT
+/F2 8 Tf
+500 460 Td
+(U7: MCP3008 ADC \(SPI\)) Tj
+0 -12 Td
+(CH0: pH Sensor) Tj
+0 -12 Td
+(CH1: Turbidity Sensor) Tj
+0 -12 Td
+(GPIO15: 1-Wire \(DS18B20\)) Tj
+0 -12 Td
+(R13: 4.7K pullup) Tj
+ET
+
+% Motor Driver Section
+50 360 m
+250 360 l
+250 260 l
+50 260 l
+50 360 l
+S
+
+BT
+/F1 10 Tf
+55 365 Td
+(MOTOR DRIVER) Tj
+ET
+
+BT
+/F2 8 Tf
+60 340 Td
+(U2: L298N Dual H-Bridge) Tj
+0 -12 Td
+(IN1: GPIO25) Tj
+0 -12 Td
+(IN2: GPIO26) Tj
+0 -12 Td
+(ENA: GPIO27 \(PWM\)) Tj
+0 -12 Td
+(OUT1,OUT2: Pump Motor) Tj
+ET
+
+% LoRa Module Section
+270 360 m
+470 360 l
+470 260 l
+270 260 l
+270 360 l
+S
+
+BT
+/F1 10 Tf
+275 365 Td
+(LORA TELEMETRY) Tj
+ET
+
+BT
+/F2 8 Tf
+280 340 Td
+(U5: RFM95W 915MHz) Tj
+0 -12 Td
+(NSS: GPIO4) Tj
+0 -12 Td
+(SCK: GPIO5) Tj
+0 -12 Td
+(MISO: GPIO18) Tj
+0 -12 Td
+(MOSI: GPIO19) Tj
+0 -12 Td
+(DIO0: GPIO2) Tj
+ET
+
+% GPS Module Section
+490 360 m
+690 360 l
+690 260 l
+490 260 l
+490 360 l
+S
+
+BT
+/F1 10 Tf
+495 365 Td
+(GPS MODULE) Tj
+ET
+
+BT
+/F2 8 Tf
+500 340 Td
+(U6: NEO-6M GPS) Tj
+0 -12 Td
+(TX: GPIO16 \(RX2\)) Tj
+0 -12 Td
+(RX: GPIO17 \(TX2\)) Tj
+0 -12 Td
+(Baud: 9600) Tj
+0 -12 Td
+(Update: 10Hz) Tj
+ET
+
+% SD Card Section
+50 240 m
+250 240 l
+250 140 l
+50 140 l
+50 240 l
+S
+
+BT
+/F1 10 Tf
+55 245 Td
+(DATA LOGGING) Tj
+ET
+
+BT
+/F2 8 Tf
+60 220 Td
+(J5: MicroSD Socket) Tj
+0 -12 Td
+(CS: GPIO13) Tj
+0 -12 Td
+(SCK: GPIO14) Tj
+0 -12 Td
+(MISO: GPIO12) Tj
+0 -12 Td
+(MOSI: GPIO23) Tj
+0 -12 Td
+(Format: FAT32) Tj
+ET
+
+% Status Indicators Section
+270 240 m
+470 240 l
+470 140 l
+270 140 l
+270 240 l
+S
+
+BT
+/F1 10 Tf
+275 245 Td
+(STATUS INDICATORS) Tj
+ET
+
+BT
+/F2 8 Tf
+280 220 Td
+(D2: Power LED \(Red\)) Tj
+0 -12 Td
+(D3: GPS Lock \(Green\)) Tj
+0 -12 Td
+(D4: LoRa TX \(Blue\)) Tj
+0 -12 Td
+(D5: Sampling \(Red\)) Tj
+0 -12 Td
+(D6: Error \(Red\)) Tj
+0 -12 Td
+(BZ1: Piezo Buzzer) Tj
+ET
+
+% External Connectors Section
+490 240 m
+690 240 l
+690 140 l
+490 140 l
+490 240 l
+S
+
+BT
+/F1 10 Tf
+495 245 Td
+(EXTERNAL SENSORS) Tj
+ET
+
+BT
+/F2 8 Tf
+500 220 Td
+(J1: BNC \(pH Sensor\)) Tj
+0 -12 Td
+(J2: 4-Pin \(Turbidity\)) Tj
+0 -12 Td
+(J3: 2-Pin \(Pump Motor\)) Tj
+0 -12 Td
+(J4: 3-Pin \(DS18B20\)) Tj
+0 -12 Td
+(X1: Temperature Sensor) Tj
+ET
+
+% Pin Assignments Table
+BT
+/F1 10 Tf
+50 110 Td
+(ESP32 GPIO ASSIGNMENTS) Tj
+ET
+
+BT
+/F2 7 Tf
+50 95 Td
+(GPIO2: LoRa DIO0 | GPIO4: LoRa CS | GPIO5: LoRa SCK | GPIO12: SD MISO | GPIO13: SD CS) Tj
+0 -10 Td
+(GPIO14: SD SCK | GPIO15: 1-Wire | GPIO16: GPS RX | GPIO17: GPS TX | GPIO18: LoRa MISO) Tj
+0 -10 Td
+(GPIO19: LoRa MOSI | GPIO21: I2C SDA | GPIO22: I2C SCL | GPIO23: SD MOSI | GPIO25: Motor IN1) Tj
+0 -10 Td
+(GPIO26: Motor IN2 | GPIO27: Motor PWM | GPIO32: ADC CS | GPIO33: ADC SCK | GPIO34: LED Status) Tj
+ET
+
+% Notes Section
+BT
+/F1 9 Tf
+50 40 Td
+(DESIGN NOTES:) Tj
+ET
+
+BT
+/F2 7 Tf
+50 28 Td
+(1. All decoupling capacitors should be placed close to IC power pins) Tj
+0 -8 Td
+(2. LoRa and GPS modules require external antennas with proper impedance matching) Tj
+0 -8 Td
+(3. Keep high-frequency traces \(SPI, I2C\) short and direct) Tj
+0 -8 Td
+(4. Use star grounding topology for analog sensor ground) Tj
+0 -8 Td
+(5. Motor driver should have heatsink for continuous operation) Tj
+0 -8 Td
+(6. Protect all external connectors with TVS diodes or similar) Tj
+0 -8 Td
+(7. Add pullup resistors on I2C lines \(4.7K typical\)) Tj
+0 -8 Td
+(8. Test all sensor interfaces individually before full system integration) Tj
+ET
+
+% Title Block
+710 40 m
+792 40 l
+792 100 l
+710 100 l
+710 40 l
+S
+
+BT
+/F2 7 Tf
+715 85 Td
+(Title:) Tj
+ET
+
+BT
+/F2 6 Tf
+715 75 Td
+(Water Quality Monitor) Tj
+ET
+
+BT
+/F2 7 Tf
+715 65 Td
+(Rev: 1.0) Tj
+ET
+
+BT
+/F2 7 Tf
+715 55 Td
+(Date: 2024-01-15) Tj
+ET
+
+BT
+/F2 7 Tf
+715 45 Td
+(Sheet: 1/1) Tj
+ET
+
+endstream
+endobj
+
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-Bold
+>>
+endobj
+
+6 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+
+xref
+0 7
+0000000000 65535 f
+0000000009 00000 n
+0000000058 00000 n
+0000000115 00000 n
+0000000274 00000 n
+0000005526 00000 n
+0000005614 00000 n
+trailer
+<<
+/Size 7
+/Root 1 0 R
+>>
+startxref
+5697
+%%EOF
