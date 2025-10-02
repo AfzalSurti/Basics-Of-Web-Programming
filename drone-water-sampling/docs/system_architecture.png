@@ -1,0 +1,200 @@
+# System Architecture Diagram - Water Sampling System
+# This is a text-based representation of the system architecture
+# For actual PNG diagram, use draw.io, Lucidchart, or similar tools
+
+==============================================================================
+                    DRONE WATER SAMPLING SYSTEM ARCHITECTURE
+==============================================================================
+
+┌────────────────────────────────────────────────────────────────────────┐
+│                          UAV PLATFORM LAYER                             │
+├────────────────────────────────────────────────────────────────────────┤
+│                                                                         │
+│  ┌─────────────────────┐         ┌──────────────────────┐            │
+│  │  Flight Controller  │         │   Power System       │            │
+│  │   (Pixhawk 4)      │         │   4S/6S LiPo        │            │
+│  │                     │◄────────┤   5000+ mAh         │            │
+│  │  - ArduCopter      │         │   BMS & Distribution │            │
+│  │  - GPS/Compass     │         └──────────────────────┘            │
+│  │  - IMU/Gyro        │                                              │
+│  │  - Barometer       │         ┌──────────────────────┐            │
+│  └─────────────────────┘         │   Motor/ESC System   │            │
+│           │                      │   Quadcopter/Hex     │            │
+│           │                      │   2.5kg+ payload     │            │
+│           │                      └──────────────────────┘            │
+│           ▼                                                            │
+│  ┌─────────────────────────────────────────────────────┐             │
+│  │           MAVLink Communication Protocol             │             │
+│  │        (Command & Control, Telemetry)                │             │
+│  └─────────────────────────────────────────────────────┘             │
+└────────────────────────────────────────────────────────────────────────┘
+                                  │
+                                  ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│                      WATER SAMPLING MODULE LAYER                        │
+├────────────────────────────────────────────────────────────────────────┤
+│                                                                         │
+│  ┌──────────────────┐   ┌──────────────────┐   ┌─────────────────┐  │
+│  │  Mechanical      │   │  Sample Storage   │   │  Pump System    │  │
+│  │  Components      │   │                   │   │                 │  │
+│  │  - Housing       │◄──┤  - 1L Bottle     │◄──┤  - Peristaltic  │  │
+│  │  - Mount Points  │   │  - Quick Release  │   │  - 12V DC Motor │  │
+│  │  - Suction Pipe  │   │  - Gasket Seal   │   │  - Flow: 100mL/m│  │
+│  │  - Cable Glands  │   └──────────────────┘   └─────────────────┘  │
+│  └──────────────────┘                                                  │
+│           │                                                             │
+│           ▼                                                             │
+│  ┌────────────────────────────────────────────────────────────────┐  │
+│  │                    ESP32 CONTROL UNIT                           │  │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────────────┐ │  │
+│  │  │ESP32-WROOM-32│  │ Power Mgmt   │  │  Motor Driver        │ │  │
+│  │  │240MHz WiFi/BT│  │ 7.4V→5V→3.3V │  │  L298N H-Bridge      │ │  │
+│  │  └──────────────┘  └──────────────┘  └──────────────────────┘ │  │
+│  └────────────────────────────────────────────────────────────────┘  │
+└────────────────────────────────────────────────────────────────────────┘
+                                  │
+                                  ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│                       SENSOR ARRAY LAYER                                │
+├────────────────────────────────────────────────────────────────────────┤
+│                                                                         │
+│  ┌──────────────┐  ┌───────────────┐  ┌──────────────────────────┐  │
+│  │  pH Sensor   │  │ Turbidity     │  │  Temperature Sensor      │  │
+│  │  Range: 0-14 │  │ Range:0-3000  │  │  DS18B20 1-Wire         │  │
+│  │  Acc: ±0.1   │  │ NTU Acc:±2    │  │  Range: -55 to +125°C   │  │
+│  │  BNC Connect │  │ Analog Output │  │  Accuracy: ±0.5°C       │  │
+│  └──────────────┘  └───────────────┘  └──────────────────────────┘  │
+│         │                  │                       │                   │
+│         └──────────────────┴───────────────────────┘                   │
+│                            │                                            │
+│                            ▼                                            │
+│                   ┌─────────────────┐                                  │
+│                   │  MCP3008 ADC    │                                  │
+│                   │  10-bit, 8-ch   │                                  │
+│                   │  SPI Interface  │                                  │
+│                   └─────────────────┘                                  │
+└────────────────────────────────────────────────────────────────────────┘
+                                  │
+                                  ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│                    COMMUNICATION & NAVIGATION LAYER                     │
+├────────────────────────────────────────────────────────────────────────┤
+│                                                                         │
+│  ┌──────────────────┐           ┌─────────────────────────────────┐  │
+│  │  GPS Module      │           │  LoRa Telemetry Module          │  │
+│  │  NEO-6M u-blox   │           │  RFM95W 915MHz/868MHz           │  │
+│  │  - 10Hz Update   │           │  - Range: 10+ km LOS            │  │
+│  │  - ±2m Accuracy  │           │  - SF7, BW125kHz                │  │
+│  │  - UART Interface│           │  - SPI Interface                │  │
+│  └──────────────────┘           │  - TX Power: 20dBm              │  │
+│           │                      └─────────────────────────────────┘  │
+│           │                                     │                       │
+│           └─────────────────┬───────────────────┘                      │
+│                             │                                           │
+│                             ▼                                           │
+│                    ┌──────────────────┐                                │
+│                    │  Data Logging    │                                │
+│                    │  MicroSD Card    │                                │
+│                    │  16GB Storage    │                                │
+│                    │  CSV Format      │                                │
+│                    └──────────────────┘                                │
+└────────────────────────────────────────────────────────────────────────┘
+                                  │
+                        LoRa Wireless Link
+                          (915/868 MHz)
+                                  ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│                    GROUND CONTROL STATION LAYER                         │
+├────────────────────────────────────────────────────────────────────────┤
+│                                                                         │
+│  ┌──────────────────────────────────────────────────────────────┐    │
+│  │                   Computer/Laptop System                      │    │
+│  │  ┌────────────────┐         ┌───────────────────────────┐   │    │
+│  │  │  Web Dashboard │         │  Telemetry Receiver       │   │    │
+│  │  │  HTML/CSS/JS   │◄────────┤  Python Script            │   │    │
+│  │  │  Real-time UI  │         │  Serial ↔ LoRa Module     │   │    │
+│  │  └────────────────┘         └───────────────────────────┘   │    │
+│  │         │                                                     │    │
+│  │         ▼                                                     │    │
+│  │  ┌────────────────────────────────────────────────────────┐ │    │
+│  │  │           Data Processing & Visualization              │ │    │
+│  │  │  - Real-time sensor plotting                           │ │    │
+│  │  │  - GPS tracking and mapping                            │ │    │
+│  │  │  - Mission status monitoring                           │ │    │
+│  │  │  - Data export (CSV, JSON)                            │ │    │
+│  │  └────────────────────────────────────────────────────────┘ │    │
+│  └──────────────────────────────────────────────────────────────┘    │
+│                                                                         │
+│  ┌──────────────────────────────────────────────────────────────┐    │
+│  │                    Optional Integrations                      │    │
+│  │  - Cloud Storage (AWS S3, Google Cloud)                      │    │
+│  │  - Database Logging (PostgreSQL, InfluxDB)                   │    │
+│  │  - Analysis Tools (Python/Jupyter, R)                        │    │
+│  │  - Reporting Dashboard (Grafana, custom web)                 │    │
+│  └──────────────────────────────────────────────────────────────┘    │
+└────────────────────────────────────────────────────────────────────────┘
+
+==============================================================================
+                            DATA FLOW SUMMARY
+==============================================================================
+
+Mission Execution Flow:
+1. Ground Control → Mission Upload → UAV Flight Controller
+2. UAV → Navigate to Waypoint → Position Hold
+3. ESP32 → Activate Pump → Collect Sample
+4. Sensors → Read Values → ESP32 Processing
+5. ESP32 → LoRa Transmission → Ground Station
+6. ESP32 → Log to microSD → Local Storage
+7. UAV → Return to Home → Land and Disarm
+8. Ground Station → Download Data → Analysis
+
+Real-time Telemetry:
+- Frequency: Every 5-10 seconds
+- Packet Size: ~80 bytes
+- Data: pH, Turbidity, Temp, GPS, Status
+- Protocol: Custom ASCII/Binary over LoRa
+- Latency: <200ms one-way
+
+==============================================================================
+                        COMPONENT SPECIFICATIONS
+==============================================================================
+
+WEIGHT BREAKDOWN:
+- Mechanical System: 800g
+- Electronics & Sensors: 400g
+- Sample (full): 1000g
+- Total Loaded: 2200g
+
+POWER BUDGET:
+- ESP32 System: 500mA @ 3.3V = 1.65W
+- Sensors: 200mA @ 5V = 1.0W
+- Pump (active): 1000mA @ 12V = 12W
+- GPS + LoRa: 300mA @ 5V = 1.5W
+- Total (sampling): ~16W
+- Total (idle): ~4W
+
+OPERATIONAL PARAMETERS:
+- Operating Temp: 0-40°C
+- Storage Temp: -20 to +60°C
+- Humidity: 0-95% RH (non-condensing)
+- Altitude: 0-1000m AMSL
+- Mission Duration: 15-20 minutes
+- Sample Volume: Up to 1000mL
+- Sampling Depth: 0.3-1.0m below surface
+
+==============================================================================
+
+To generate actual PNG diagram:
+1. Use Lucidchart, draw.io, or Visio
+2. Import this structure
+3. Add colors, icons, and styling
+4. Export as high-resolution PNG (300 DPI minimum)
+5. Save to this location
+
+Recommended diagram software:
+- draw.io (free, web-based)
+- Lucidchart (professional)
+- Microsoft Visio (enterprise)
+- Inkscape (open-source SVG)
+
+==============================================================================

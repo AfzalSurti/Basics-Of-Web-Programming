@@ -1,0 +1,274 @@
+# Water Sampling Mission Configuration
+# This file defines parameters for autonomous water sampling operations
+
+mission:
+  name: "Lake Water Quality Sampling"
+  description: "Automated water sampling mission for environmental monitoring"
+  version: "1.0.0"
+  date: "2024-01-15"
+
+# Vehicle connection settings
+vehicle:
+  connection_string: "tcp:127.0.0.1:5760"  # SITL simulation
+  # connection_string: "/dev/ttyUSB0"      # Serial connection
+  # connection_string: "udp:127.0.0.1:14550"  # UDP connection
+  baud_rate: 57600
+  timeout: 60  # seconds
+
+# Target location (GPS coordinates)
+target_location:
+  # Example: Lake in California
+  latitude: 37.7749
+  longitude: -122.4194
+  altitude: 0.5  # meters above water surface
+  
+  # Alternative locations (uncomment to use)
+  # Lake Tahoe:
+  # latitude: 39.0968
+  # longitude: -120.0324
+  
+  # Reservoir:
+  # latitude: 38.5816
+  # longitude: -121.4944
+
+# Flight parameters
+flight:
+  takeoff_altitude: 10.0  # meters
+  cruise_altitude: 20.0   # meters
+  cruise_speed: 5.0       # m/s
+  descent_rate: 1.0       # m/s
+  ascent_rate: 2.0        # m/s
+  
+  # Sampling altitude
+  sampling_altitude: 0.5  # meters above water surface
+  hover_stability_time: 3  # seconds to stabilize before sampling
+
+# Sampling parameters
+sampling:
+  pipe_extension_depth: 0.5  # meters below water surface
+  target_volume: 500  # milliliters
+  pump_flow_rate: 100  # mL/min
+  pump_speed: 100  # percent (0-100)
+  
+  # Calculated sampling duration (auto-calculated if not specified)
+  duration: 300  # seconds (5 minutes for 500mL at 100mL/min)
+  
+  # Sampling sequence
+  sequence:
+    - step: "stabilize_hover"
+      duration: 3
+    - step: "extend_pipe"
+      duration: 5
+    - step: "start_pump"
+    - step: "collect_sample"
+      duration: 300
+    - step: "stop_pump"
+    - step: "read_sensors"
+      duration: 5
+    - step: "retract_pipe"
+      duration: 5
+    - step: "transmit_data"
+      duration: 2
+
+# Sensor configuration
+sensors:
+  ph:
+    enabled: true
+    calibration:
+      slope: 3.5
+      offset: 7.0
+    range: [0, 14]
+    accuracy: 0.1
+    
+  turbidity:
+    enabled: true
+    calibration_factor: 5.0
+    range: [0, 3000]  # NTU
+    accuracy: 2.0
+    
+  temperature:
+    enabled: true
+    sensor_type: "DS18B20"
+    range: [-55, 125]  # Celsius
+    accuracy: 0.5
+    
+  gps:
+    enabled: true
+    update_rate: 10  # Hz
+    min_satellites: 6
+    required_fix: 3  # 3D fix
+
+# Telemetry configuration
+telemetry:
+  lora:
+    enabled: true
+    frequency: 915  # MHz (US: 915, Europe: 868)
+    bandwidth: 125  # kHz
+    spreading_factor: 7
+    coding_rate: 5
+    tx_power: 20  # dBm
+    
+  transmission:
+    interval: 10  # seconds
+    heartbeat_interval: 30  # seconds
+    retry_count: 3
+    timeout: 5  # seconds
+
+# Data logging
+data_logging:
+  enabled: true
+  storage: "microSD"
+  format: "CSV"
+  filename_pattern: "water_data_{timestamp}.csv"
+  
+  fields:
+    - timestamp
+    - latitude
+    - longitude
+    - altitude
+    - pH
+    - turbidity
+    - temperature
+    - satellites
+    - battery_voltage
+    - battery_level
+
+# Safety parameters
+safety:
+  # Battery limits
+  min_battery_level: 30.0  # percent
+  rtl_battery_level: 25.0  # percent (return to launch)
+  emergency_battery_level: 20.0  # percent
+  
+  # Environmental limits
+  max_wind_speed: 10.0  # m/s
+  max_wind_gust: 15.0  # m/s
+  min_visibility: 1000  # meters
+  max_wave_height: 0.5  # meters (for water landing)
+  
+  # Geofencing
+  geofence:
+    enabled: true
+    radius: 500  # meters from home
+    max_altitude: 50  # meters AGL
+    
+  # Fail-safes
+  failsafe:
+    gps_loss_action: "RTL"
+    radio_loss_action: "RTL"
+    battery_failsafe_action: "RTL"
+    geofence_action: "RTL"
+    
+  # Pre-flight checks
+  pre_flight_checks:
+    - battery_level
+    - gps_fix
+    - home_location
+    - mode_availability
+    - sensor_status
+    - pump_functionality
+
+# Mission waypoints (optional - for multi-point sampling)
+waypoints:
+  - name: "Home"
+    latitude: 37.7749
+    longitude: -122.4194
+    altitude: 0
+    action: "takeoff"
+    
+  - name: "Sampling Point 1"
+    latitude: 37.7750
+    longitude: -122.4190
+    altitude: 0.5
+    action: "sample"
+    
+  - name: "Sampling Point 2"
+    latitude: 37.7755
+    longitude: -122.4195
+    altitude: 0.5
+    action: "sample"
+    
+  - name: "Return to Launch"
+    latitude: 37.7749
+    longitude: -122.4194
+    altitude: 0
+    action: "land"
+
+# Notifications and alerts
+notifications:
+  enabled: true
+  
+  events:
+    - event: "mission_start"
+      actions: ["buzzer", "led", "telemetry"]
+      
+    - event: "sampling_start"
+      actions: ["buzzer", "led", "telemetry"]
+      
+    - event: "sampling_complete"
+      actions: ["buzzer", "led", "telemetry"]
+      
+    - event: "mission_complete"
+      actions: ["buzzer", "led", "telemetry"]
+      
+    - event: "error"
+      actions: ["buzzer_urgent", "led_error", "telemetry"]
+      
+    - event: "low_battery"
+      actions: ["buzzer", "led_warning", "telemetry"]
+
+# Advanced options
+advanced:
+  # Simulation mode
+  simulation:
+    enabled: true
+    use_simulated_sensors: true
+    sensor_noise: 0.05  # 5% noise
+    
+  # Recovery options
+  recovery:
+    auto_resume: false
+    save_state_interval: 5  # seconds
+    state_file: "mission_state.json"
+    
+  # Logging verbosity
+  logging:
+    level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+    console: true
+    file: true
+    file_path: "mission.log"
+
+# Notes
+notes: |
+  Mission Configuration Notes:
+  
+  1. Always verify GPS coordinates before flight
+  2. Check weather conditions and wind speed
+  3. Ensure battery is fully charged
+  4. Calibrate sensors before mission
+  5. Test pump operation on ground
+  6. Verify LoRa communication range
+  7. Check geofence boundaries
+  8. Review safety procedures
+  9. Have manual override ready
+  10. Monitor battery throughout mission
+  
+  Regulatory Compliance:
+  - FAA Part 107 certification required (USA)
+  - Maintain visual line of sight
+  - Do not fly over people
+  - Maximum altitude: 400 feet AGL
+  - Check local airspace restrictions
+  
+  Emergency Procedures:
+  - Loss of GPS: Immediate RTL
+  - Low battery: Automatic RTL at 25%
+  - High wind: Mission abort, RTL
+  - Communication loss: Continue RTL
+  - Pump failure: Stop sampling, RTL
+  - Sensor failure: Log error, continue mission
+  
+  For detailed operation procedures, see:
+  - docs/flight_operations.md
+  - docs/safety.md
+  - docs/calibration.md
